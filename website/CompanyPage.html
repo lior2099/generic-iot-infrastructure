@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company_Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/home/lior/Desktop/git/lior.shalom/java/projects/src/il/co/ilrd/website/log-in.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        .signup {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .signup a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .product-item {
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 id="companyTitle">Company Page for</h1>
+
+    <h3>Product List</h3>
+    <div id="productList" class="product-list"></div>
+
+    <div class="signup">
+        <a href="http://10.1.0.21:8080/WebDB/register_product">Register New Product</a>
+    </div>
+
+    <script>
+        window.onload = async function() {
+    try {
+        const response = await fetch('http://10.1.0.21:8000/Users');
+        if (response.ok) {
+            const data = await response.json();
+            const productListElement = document.getElementById("productList");
+
+<!--            productListElement.innerHTML = '';-->
+
+            if (typeof data === 'object' && data !== null) {
+
+                 Object.entries(data).forEach(([key, value]) => {
+                    const itemDiv = document.createElement("div");
+                    itemDiv.textContent = `${key}, ${value}`;
+                    productListElement.appendChild(itemDiv);
+                   console.log("Success: Key:", key, ", Value:", value);
+                });
+            } else {
+                console.error("Expected an object but got:", data);
+            }
+        } else {
+            console.error("Failed to load data:", response.status);
+        }
+    } catch (error) {
+        console.error("Fetch error:", error);
+    }
+        };
+
+        const id = sessionStorage.getItem("Id");
+        if (id) {
+            document.getElementById("companyTitle").textContent = `Company Page for '${id}'`;
+        } else {
+            document.getElementById("companyTitle").textContent = "Company Page";
+        }
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/home/lior/Desktop/git/lior.shalom/java/projects/src/il/co/ilrd/website/log-in.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid ;
+            border-radius: 5px;
+        }
+    </style>
+
+    <script>
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Array.from(formData.entries()).reduce((acc, [key, value]) => {
+			acc[key] = value;
+			return acc;
+		    }, {});
+
+	        try {
+                const response = await fetch('http://10.1.0.21:8000/Users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    event.target.reset();
+                    const result = await response.json();
+                    console.log("Success:", result);
+                    window.location.href = "http://10.1.0.21:8080/WebDB/company_page";
+
+                } else {
+                    const error = await response.json();
+                    console.error("Error:", error);
+                }
+            } catch (error) {
+                console.error("Request failed:", error);
+                alert("Failed to register company. Please try again.");
+            }
+        }
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Register Product</h1>
+    <form id="formProduct" onsubmit="handleSubmit(event)">
+        <label>Product Name:
+            <input class="formInput"
+                   type="text"
+                   id="product_name"
+                   name="product_name"
+                   required>
+        </label>
+        <label>Module:
+            <input class="formInput"
+                   type="text"
+                   id="Module"
+                   name="Module"
+                   required>
+        </label>
+        <input style="width: fit-content;   cursor: pointer;" type="submit" value="Submit">
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('website/log-in.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .signup {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .signup a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        async function handleSubmit(event) {
+            event.preventDefault();
+		    const id = document.getElementById("Id").value;
+		    sessionStorage.setItem("Id", id);
+		    event.target.reset();
+		    window.location.href = "http://10.1.0.21:8080/WebDB/register_company";
+        }
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Generic IOT Infrastructure</h1>
+
+    <form onsubmit="handleSubmit(event)">
+        <input type="text" id="Id" name="Id" placeholder="Id" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="signup">
+        <p>Don't have an account? <a href="register.html">Sign up</a></p>
+    </div>
+    <div class="signup">
+         <a href="http://10.1.0.21:8080/WebDB/register_company">Register company</a>
+    </div>
+
+
+</div>
+
+</body>
+</html>

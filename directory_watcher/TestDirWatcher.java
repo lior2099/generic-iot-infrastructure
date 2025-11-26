@@ -1,4 +1,4 @@
-package il.co.ilrd.directory_watcher;
+package directory_watcher;
 
 import il.co.ilrd.observer.Callback;
 import org.junit.jupiter.api.Test;

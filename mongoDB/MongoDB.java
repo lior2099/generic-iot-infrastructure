@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.mongoDB;
+package mongoDB;
 
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;

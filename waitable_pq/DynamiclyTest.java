@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.waitable_pq;
+package waitable_pq;
 
 import static org.junit.jupiter.api.Assertions.*;
 

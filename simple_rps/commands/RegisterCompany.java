@@ -5,7 +5,7 @@ Reviewer:
 Date: 25/08/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.simple_rps.commands;
+package simple_rps.commands;
 
 import il.co.ilrd.simple_rps.Params;
 import org.json.JSONObject;

@@ -5,7 +5,7 @@
  reviewer: Yarin
 */
 
-package il.co.ilrd.generic_linked_list;
+package generic_linked_list;
 
 import org.junit.jupiter.api.Test;
 

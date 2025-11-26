@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import java.nio.channels.Channel;
 import java.util.Map;

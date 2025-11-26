@@ -5,7 +5,7 @@ Reviewer:
 Date: 19/08/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.thread_pool;
+package thread_pool;
 
 import org.junit.jupiter.api.Test;
 

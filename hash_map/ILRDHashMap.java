@@ -7,7 +7,7 @@
 */
 
 
-package il.co.ilrd.hash_map;
+package hash_map;
 
 import il.co.ilrd.pair.Pair;
 

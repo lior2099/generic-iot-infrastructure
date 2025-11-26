@@ -6,7 +6,7 @@
  Date : 28.07.24
  ************************************/
 
-package il.co.ilrd.java_2c;
+package java_2c;
 
 class Animal {
 

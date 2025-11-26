@@ -5,7 +5,7 @@
  reviewer: lior
 */
 
-package il.co.ilrd.pair;
+package pair;
 
 import java.util.Comparator;
 import java.util.Map;

@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.util;
+package util;
 
 public class Color {
     // Reset

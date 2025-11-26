@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.chat;
+package chat;
 
 import java.io.*;
 import java.net.InetSocketAddress;

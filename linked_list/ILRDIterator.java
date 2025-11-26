@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.linked_list;
+package linked_list;
 
 public interface ILRDIterator {
     boolean hasNext();

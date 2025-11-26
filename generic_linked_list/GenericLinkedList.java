@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.generic_linked_list;
+package generic_linked_list;
 
 import java.util.Iterator;
 import java.util.ConcurrentModificationException;

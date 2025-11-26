@@ -6,7 +6,7 @@ Reviewer:
 Date: 25/08/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -28,8 +28,8 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import static il.co.ilrd.util.Color.*;
-import static il.co.ilrd.util.Color.RESET;
+import static util.Color.*;
+import static util.Color.RESET;
 
 public class GatewayServer {
     private final ConnectionManager connectionManager;

@@ -5,7 +5,7 @@
  reviewer:Maya
 */
 
-package il.co.ilrd.singeton;
+package singeton;
 
 import org.junit.jupiter.api.Test;
 

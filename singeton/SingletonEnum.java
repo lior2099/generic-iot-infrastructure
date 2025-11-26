@@ -6,7 +6,7 @@
  reviewer:Maya
 */
 
-package il.co.ilrd.singeton;
+package singeton;
 
 public enum SingletonEnum {
     INSTANCE;

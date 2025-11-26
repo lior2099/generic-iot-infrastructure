@@ -6,7 +6,7 @@ Reviewer: Yarin
 Date: 25/08/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.observer;
+package observer;
 
 import java.util.Collection;
 import java.util.HashSet;

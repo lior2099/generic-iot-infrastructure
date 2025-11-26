@@ -5,7 +5,7 @@ Reviewer:
 Date: 06/10/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import il.co.ilrd.pair.Pair;
 import org.json.JSONObject;

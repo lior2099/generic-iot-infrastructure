@@ -5,7 +5,7 @@
  reviewer: Lior
 */
 
-package il.co.ilrd.complex_number;
+package complex_number;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;

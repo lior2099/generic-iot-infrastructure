@@ -5,7 +5,7 @@
  reviewer: Haim
 */
 
-package il.co.ilrd.factory;
+package factory;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,25 +1,31 @@
+package chat;
+
 /*
  FileName: ChatApp.java
  Author: Lior Shalom
  Date: 10/09/24
  reviewer: Yarin
-*/
-
-
-package il.co.ilrd.chat;
-
+ */
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
-import java.util.*;
+import java.nio.channels.ClosedSelectorException;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
-import static il.co.ilrd.util.Color.*;
-import static il.co.ilrd.util.Color.RESET;
+import util.Color;
 
 public class ChatApp {
+
     private final ByteBuffer buffer;
     private final static int BUFFER_SIZE = 1024;
     private final ManagerConnections managerConnections;
@@ -27,7 +33,7 @@ public class ChatApp {
 
     public ChatApp(int port) {
         buffer = ByteBuffer.allocate(BUFFER_SIZE);
-        managerConnections = new ManagerConnections(5555);
+        managerConnections = new ManagerConnections(port);
         handlingManager = new MessageHandlingManager();
     }
 
@@ -71,14 +77,14 @@ public class ChatApp {
 
         public void start() {
             try {
-                System.out.println(GREEN_BOLD + "Server is up" + RESET);
+                System.out.println(Color.GREEN_BOLD + "Server is up" + Color.RESET);
                 while (isRunning) {
                     selector.select();
                     Set<SelectionKey> selectionKeySet;
 
                     try {
                         selectionKeySet = selector.selectedKeys();
-                    }catch (ClosedSelectorException e){
+                    } catch (ClosedSelectorException e) {
                         return;
                     }
 
@@ -109,6 +115,7 @@ public class ChatApp {
     }
 
     private class Communicator {
+
         private SocketChannel client;
 
         Communicator(SocketChannel channel) {
@@ -122,7 +129,7 @@ public class ChatApp {
 
             buffer.flip();
             try {
-                while (buffer.hasRemaining()){
+                while (buffer.hasRemaining()) {
                     client.write(buffer);
                 }
             } catch (IOException e) {
@@ -150,6 +157,7 @@ public class ChatApp {
     }
 
     private class MessageHandlingManager {
+
         private Map<Communicator, String> users;
         private Message message;
         private MessageParser messageParser;
@@ -167,7 +175,7 @@ public class ChatApp {
                 return;
             }
             message = messageParser.parse(buffer);
-            Request.values()[message.getType().ordinal()].handle(message, communicator, this);
+            Request.from(message.getType()).handle(message, communicator, this);
         }
 
         private class MessageParser {
@@ -180,8 +188,7 @@ public class ChatApp {
                 buffer.get(bytes);
 
                 // Deserialize byte array
-                try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-                     ObjectInputStream ois = new ObjectInputStream(bais)) {
+                try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes); ObjectInputStream ois = new ObjectInputStream(bais)) {
                     return (Message) ois.readObject();
                 } catch (IOException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
@@ -191,16 +198,14 @@ public class ChatApp {
     }
 
     private enum Request {
-        MESSAGE {
+        SEND_MESSAGE {
             @Override
             void handle(Message message, Communicator communicator, MessageHandlingManager manager) {
                 String username = manager.users.get(communicator);
-                String sendMessage = (username + ": " + message.getBody());
-
+                String sendMessage = username + ": " + message.getBody();
                 sendToAll(sendMessage, communicator, manager);
             }
         },
-
         REGISTER {
             @Override
             void handle(Message message, Communicator communicator, MessageHandlingManager manager) {
@@ -209,29 +214,26 @@ public class ChatApp {
                     return;
                 }
 
-                String oldName = null;
-                oldName = manager.users.put(communicator, message.getBody());
+                String oldName = manager.users.put(communicator, message.getBody());
 
                 if (oldName == null) {
                     communicator.write("REGISTER OK", manager.buffer);
-
-                    String sendMessage = ("the User : " + message.getBody() + " -  has enter the game");
+                    String sendMessage = "the User : " + message.getBody() + " -  has enter the game";
                     sendToAll(sendMessage, communicator, manager);
                 } else {
                     communicator.write("REGISTER NewName", manager.buffer);
-                    String sendMessage = ("the User : " + message.getBody() + " -  has enter the game");
+                    String sendMessage = "the User : " + message.getBody() + " -  has enter the game";
                     sendToAll(sendMessage, communicator, manager);
                 }
             }
         },
-
         UNREGISTER {
             @Override
             void handle(Message message, Communicator communicator, MessageHandlingManager manager) {
                 communicator.write("bye", manager.buffer);
 
                 String username = manager.users.get(communicator);
-                String sendMessage = ("the User : " + username + "- left the chat !!!!");
+                String sendMessage = "the User : " + username + "- left the chat !!!!";
 
                 sendToAll(sendMessage, communicator, manager);
                 manager.users.remove(communicator);
@@ -247,18 +249,15 @@ public class ChatApp {
         abstract void handle(Message message, Communicator communicator, MessageHandlingManager manager);
 
         private static void sendToAll(String message, Communicator communicator, MessageHandlingManager manager) {
-
-            for (Communicator clint : manager.users.keySet()) {
-                if (!clint.equals(communicator)) {
-                    clint.write(message, manager.buffer);
+            for (Communicator client : manager.users.keySet()) {
+                if (!client.equals(communicator)) {
+                    client.write(message, manager.buffer);
                 }
             }
         }
 
         private static boolean UserNameOk(Communicator communicator, MessageHandlingManager manager) {
-
             String userName = manager.message.getBody();
-
             for (String name : manager.users.values()) {
                 if (name.equals(userName)) {
                     return false;
@@ -266,5 +265,20 @@ public class ChatApp {
             }
             return true;
         }
+
+        // *** THIS is the helper mapping from Message.MethodType → Request ***
+        static Request from(Message.MethodType type) {
+            switch (type) {
+                case SEND_MESSAGE:
+                    return SEND_MESSAGE;
+                case REGISTER:
+                    return REGISTER;
+                case UNREGISTER:
+                    return UNREGISTER;
+                default:
+                    throw new IllegalArgumentException("Unknown MethodType: " + type);
+            }
+        }
     }
+
 }

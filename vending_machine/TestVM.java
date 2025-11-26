@@ -5,7 +5,7 @@
  reviewer: Maya
 */
 
-package il.co.ilrd.vending_machine;
+package vending_machine;
 
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

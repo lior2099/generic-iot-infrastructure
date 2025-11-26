@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.vending_machine;
+package vending_machine;
 
 public class DisplayUser implements Display {
     @Override

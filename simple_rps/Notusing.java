@@ -1,4 +1,4 @@
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import java.io.*;
 import java.nio.ByteBuffer;

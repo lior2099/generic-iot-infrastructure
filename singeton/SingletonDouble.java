@@ -4,7 +4,7 @@
  Date: 31/07/24
  reviewer:Maya
 */
-package il.co.ilrd.singeton;
+package singeton;
 
 public class SingletonDouble {
     private static volatile SingletonDouble instance = null;

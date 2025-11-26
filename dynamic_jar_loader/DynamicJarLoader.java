@@ -6,7 +6,7 @@ Reviewer: Yarin
 Date: 2/09/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.dynamic_jar_loader;
+package dynamic_jar_loader;
 
 
 import java.io.File;

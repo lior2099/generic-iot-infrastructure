@@ -5,7 +5,7 @@
  reviewer:Maya
 */
 
-package il.co.ilrd.singeton;
+package singeton;
 
 public final class SingletonLazy {
     private static SingletonLazy instance;

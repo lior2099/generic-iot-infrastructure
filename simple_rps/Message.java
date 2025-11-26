@@ -1,4 +1,4 @@
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 public interface Message<T> {
     public T getMessage();

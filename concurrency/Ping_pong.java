@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.concurrency;
+package concurrency;
 
 import java.util.concurrent.atomic.*;
 

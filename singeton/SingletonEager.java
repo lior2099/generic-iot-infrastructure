@@ -5,7 +5,7 @@
  reviewer:Maya
 */
 
-package il.co.ilrd.singeton;
+package singeton;
 
 public class SingletonEager {
     private static final SingletonEager instance = new SingletonEager();

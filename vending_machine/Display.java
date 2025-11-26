@@ -5,7 +5,7 @@
  reviewer: Maya
 */
 
-package il.co.ilrd.vending_machine;
+package vending_machine;
 
 public interface Display {
     public void write(String str);

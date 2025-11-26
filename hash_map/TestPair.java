@@ -5,7 +5,7 @@
  reviewer: lior
 */
 
-package il.co.ilrd.hash_map;
+package hash_map;
 
 import il.co.ilrd.pair.Pair;
 import org.junit.jupiter.api.Test;

@@ -5,14 +5,13 @@
  reviewer:
 */
 
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
+import static il.co.ilrd.util.Color.*;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-
-import static il.co.ilrd.util.Color.*;
 
 public class TCPClient {
     private SocketChannel channel = null;

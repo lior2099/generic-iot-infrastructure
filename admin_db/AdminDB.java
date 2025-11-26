@@ -6,21 +6,21 @@
 */
 
 
-package il.co.ilrd.admin_db;
+package admin_db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
 public class AdminDB {
     private static final String DB_URL = "jdbc:mysql://localhost/";
-    private static final String USER = "lior";
+    private static final String USER = "root";
     private static final String PASS = "Aa123456";
     private static final String CREATE = "CREATE DATABASE IF NOT EXISTS AdminDB";
     private static final String USE_DB = "USE AdminDB";
@@ -31,6 +31,21 @@ public class AdminDB {
     private static final String TRIGGER_2;
     private static final String TRIGGER_3;
 
+    // Load MySQL JDBC driver
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            try {
+                // Try older driver class name for compatibility
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                System.err.println("MySQL JDBC Driver not found. Please add mysql-connector-java.jar to your classpath.");
+                System.err.println("Download from: https://dev.mysql.com/downloads/connector/j/");
+                throw new RuntimeException("MySQL JDBC Driver not found", ex);
+            }
+        }
+    }
 
     public AdminDB() throws SQLException {
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);

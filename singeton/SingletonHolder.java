@@ -6,7 +6,7 @@
  reviewer:Maya
 */
 
-package il.co.ilrd.singeton;
+package singeton;
 
 public class SingletonHolder {
     private static final class SingHolder {

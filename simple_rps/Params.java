@@ -6,7 +6,7 @@ Date: 24/08/2024
 ------------------------------------------------------------------------*/
 
 
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import java.util.Collection;
 

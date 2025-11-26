@@ -1,8 +1,7 @@
-package il.co.ilrd.mongoDB;
+package mongoDB;
 
-import com.mongodb.ConnectionString;
 import com.mongodb.client.*;
-import il.co.ilrd.pair.Pair;
+import pair.Pair;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.bson.Document;

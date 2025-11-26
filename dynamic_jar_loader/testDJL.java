@@ -1,4 +1,4 @@
-package il.co.ilrd.dynamic_jar_loader;
+package dynamic_jar_loader;
 
 import org.junit.jupiter.api.Test;
 

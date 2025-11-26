@@ -5,7 +5,7 @@
  reviewer: Maya
 */
 
-package il.co.ilrd.vending_machine;
+package vending_machine;
 
 public enum Coin {
     TEN_PENNIES(0.1), HALF_SHEKEL(0.5), SHEKEL(1.0),

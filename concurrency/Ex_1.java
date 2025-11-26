@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.concurrency;
+package concurrency;
 
 import static java.lang.Thread.sleep;
 

@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.composite;
+package composite;
 
 import org.junit.Test;
 

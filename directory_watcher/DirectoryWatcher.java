@@ -6,7 +6,7 @@ Reviewer: maya
 Date: 28/08/2024
 ------------------------------------------------------------------------*/
 
-package il.co.ilrd.directory_watcher;
+package directory_watcher;
 
 import il.co.ilrd.observer.Callback;
 import il.co.ilrd.observer.Dispatcher;

@@ -1,4 +1,4 @@
-package il.co.ilrd.simple_rps.commands;
+package simple_rps.commands;
 
 import org.json.JSONObject;
 

@@ -5,7 +5,7 @@
  reviewer: Maya
 */
 
-package il.co.ilrd.linked_list;
+package linked_list;
 
 public class Testlist {
     public static void main(String[] args) {

@@ -5,7 +5,7 @@
  reviewer: yarin
 */
 
-package il.co.ilrd.concurrency;
+package concurrency;
 
 import java.util.LinkedList;
 import java.util.List;

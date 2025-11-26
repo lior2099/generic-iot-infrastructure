@@ -6,7 +6,7 @@
 */
 
 
-package il.co.ilrd.mongoDB;
+package mongoDB;
 
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpHandler;

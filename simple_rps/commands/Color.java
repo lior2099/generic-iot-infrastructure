@@ -1,4 +1,4 @@
-package il.co.ilrd.simple_rps.commands;/*
+package simple_rps.commands;/*
  FileName: Color.java
  Author: Lior Shalom
  Date: 14/08/24

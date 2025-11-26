@@ -5,7 +5,7 @@
  reviewer:
 */
 
-package il.co.ilrd.composite;
+package composite;
 
 import java.io.File;
 import java.util.ArrayList;

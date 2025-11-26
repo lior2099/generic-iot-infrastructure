@@ -6,14 +6,14 @@ Date: 25/08/2024
 ------------------------------------------------------------------------*/
 
 
-package il.co.ilrd.simple_rps.commands;
+package simple_rps.commands;
 
-import il.co.ilrd.simple_rps.Params;
+import simple_rps.Params;
 import org.json.JSONObject;
 
 import java.util.Iterator;
 
-import static il.co.ilrd.util.Color.*;
+import static util.Color.*;
 
 public class RegisterProduct implements Command {
     private final JSONObject sendJson = new JSONObject();

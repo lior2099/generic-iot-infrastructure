@@ -4,7 +4,7 @@
  Date: 21/07/24
  reviewer: Maya
 */
-package il.co.ilrd.vending_machine;
+package vending_machine;
 
 import java.util.ArrayList;
 import java.util.Timer;

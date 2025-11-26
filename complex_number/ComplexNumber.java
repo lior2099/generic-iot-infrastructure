@@ -5,7 +5,7 @@
  reviewer: Lior
 */
 
-package il.co.ilrd.complex_number;
+package complex_number;
 
 import java.util.Objects;
 import java.lang.Double;

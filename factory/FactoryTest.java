@@ -5,7 +5,7 @@
  reviewer: ido
 */
 
-package il.co.ilrd.factory;
+package factory;
 
 import org.junit.jupiter.api.Test;
 import java.util.function.Function;

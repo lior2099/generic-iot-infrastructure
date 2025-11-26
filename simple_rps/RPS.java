@@ -4,7 +4,7 @@ Author: Lior shalom
 Reviewer: Maya   / plug & play - ido
 Date: 25/08/2024
 ------------------------------------------------------------------------*/
-package il.co.ilrd.simple_rps;
+package simple_rps;
 
 import il.co.ilrd.directory_watcher.DirectoryWatcher;
 import il.co.ilrd.dynamic_jar_loader.DynamicJarLoader;

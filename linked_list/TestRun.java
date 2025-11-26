@@ -5,7 +5,7 @@
  reviewer: Maya
 */
 
-package il.co.ilrd.linked_list;
+package linked_list;
 
 import static org.junit.jupiter.api.Assertions.*;
 
